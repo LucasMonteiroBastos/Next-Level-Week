@@ -14,58 +14,44 @@
     {% include "partials/page-header.html" %}
 
     <main>
+
+    {% if total > 0 %}
         <h4>
-            <strong>2 pontos</strong>
+            <strong>{{total}} pontos</strong>
             encontrados
         </h4>
 
         <div class="cards">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1528323273322-d81458248d40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Colectoria">
-                <h1>Colectoria</h1>
-                <h3>Resíduos Eletrônicos, Lâmpadas
-                </h3>
 
-                <p>
-                    São Luís, Maranhão
-                    <br>
-                    General Arthur Carvalho - TURU
-                    <br>
-                    Número 0
-                </p>
+            {% for place in places %}
+                    <div class="card">
+                    <img src="{{ place.image }}" alt="{{ place.name }}">
+                    <h1>{{ place.name }}</h1>
+                    <h3>{{ place.items }}</h3>
 
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1481761289552-381112059e05?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt="Colectoria">
-                <h1>Papersider</h1>
-                <h3>Papéis e Papelão
-                </h3>
+                    <p>
+                        {{ place.city }}, {{ place.state }}
+                        <br>
+                        {{ place.address }}
+                        <br>
+                        {{ place.address2 }}
+                    </p>
 
-                <p>
-                    São Luís, Maranhão
-                    <br>
-                    Av. Contorno Leste - COHATRAC I
-                    <br>
-                    Número 1
-                </p>
+                </div>
 
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1525695230005-efd074980869?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Colectoria">
-                <h1>Colectoria</h1>
-                <h3>Óleo de Cozinha
-                </h3>
+            {% endfor %}
 
-                <p>
-                    São Luís, Maranhão
-                    <br>
-                    Avenida Daniel de la Touche - COHAMA
-                    <br>
-                    Número 2
-                </p>
 
-            </div>
+            
         </div>
+
+    {%else%}
+
+    <h4><Strong>Nenhum</Strong> local encontrados</h4>
+
+    {% endif %}
+
+
 
     </main>
 {% endblock content %}
